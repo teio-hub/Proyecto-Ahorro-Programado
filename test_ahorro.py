@@ -178,9 +178,8 @@ class TestCalculoCuotaAhorro(unittest.TestCase):
             logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
 
-# Este fragmento de codigo permite ejecutar la prueb individualmente
+# Este fragmento de codigo permite ejecutar la pruebas individualmente
 # Va fijo en todas las pruebas unitarias
 if __name__ == '__main__':
-    # print( Payment.calcularCuota.__doc__)
     unittest.main()
    
