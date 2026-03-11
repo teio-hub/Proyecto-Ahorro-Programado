@@ -1,24 +1,33 @@
-# Todas las prueba sunitarias importan la biblioteca unittest
+"""
+ ===== test_ahorro.py =====
+ CLAVE 1 APLICADA: Nombres que revelan intención
+   - "meta"      → "meta_ahorro"
+   - "interes"   → "tasa_interes"
+   - "abono"     → "abono_extra"
+   - "mes_abono" → "mes_del_abono"
+"""
+
+# Todas las pruebas unitarias importan la biblioteca unittest
 import unittest
 # Las pruebas importan los modulos que hacen el trabajo, en este caso el modulo logica_ahorro
 import srs.model.logica_ahorro as logica_ahorro
 
 # Debe existir por lo menos una clase que contenga las pruebas unitarias
-# descediente de unittest.TestCase
-class TestCalculoCuotaAhorro(unittest.TestCase): 
-   
-    # Cada prueba unitaria es un metodo la clase, cuyo nombre debe iniciar con "test"
+# descendiente de unittest.TestCase
+class TestCalculoCuotaAhorro(unittest.TestCase):
+
+    # Cada prueba unitaria es un metodo de la clase, cuyo nombre debe iniciar con "test"
     def test_normal_1(self):
         # ENTRADAS
-        meta = 10000000
-        interes = 0.01
-        plazo = 24 
-        abono = 0
-        mes_abono = None
+        meta_ahorro = 10000000
+        tasa_interes = 0.01
+        plazo = 24
+        abono_extra = 0
+        mes_del_abono = None
 
-        cuota_calculada = logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+        cuota_calculada = logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
-        #SALIDA ESPERADA
+        # SALIDA ESPERADA
         cuota_esperada = 370734.72
 
         # Prueba que dos variables sean iguales
@@ -26,16 +35,15 @@ class TestCalculoCuotaAhorro(unittest.TestCase):
 
     def test_normal_2(self):
         # ENTRADAS
-        meta = 5000000
-        interes = 0.0075
+        meta_ahorro = 5000000
+        tasa_interes = 0.0075
         plazo = 12
-        abono = 0
-        mes_abono = None
+        abono_extra = 0
+        mes_del_abono = None
 
-        
-        cuota_calculada = logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+        cuota_calculada = logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
-        #SALIDA ESPERADA
+        # SALIDA ESPERADA
         cuota_esperada = 399757.38
 
         # Prueba que dos variables sean iguales
@@ -43,15 +51,15 @@ class TestCalculoCuotaAhorro(unittest.TestCase):
 
     def test_normal_3(self):
         # ENTRADAS
-        meta = 20000000
-        interes = 0.0083
+        meta_ahorro = 20000000
+        tasa_interes = 0.0083
         plazo = 36
-        abono = 0
-        mes_abono = None
+        abono_extra = 0
+        mes_del_abono = None
 
-        cuota_calculada = logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+        cuota_calculada = logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
-        #SALIDA ESPERADA
+        # SALIDA ESPERADA
         cuota_esperada = 478968.21
 
         # Prueba que dos variables sean iguales
@@ -59,13 +67,13 @@ class TestCalculoCuotaAhorro(unittest.TestCase):
 
     def testTasaCero(self):
         # ENTRADAS
-        meta = 10000000
-        interes = 0
+        meta_ahorro = 10000000
+        tasa_interes = 0
         plazo = 24
-        abono = 0
-        mes_abono = None
+        abono_extra = 0
+        mes_del_abono = None
 
-        cuota_calculada = logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+        cuota_calculada = logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
         # SALIDA ESPERADA
         cuota_esperada = 416666.67
@@ -75,13 +83,13 @@ class TestCalculoCuotaAhorro(unittest.TestCase):
 
     def testPlazo1Mes(self):
         # ENTRADAS
-        meta = 500000
-        interes = 0.01
+        meta_ahorro = 500000
+        tasa_interes = 0.01
         plazo = 1
-        abono = 0
-        mes_abono = None
+        abono_extra = 0
+        mes_del_abono = None
 
-        cuota_calculada = logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+        cuota_calculada = logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
         # SALIDA ESPERADA
         cuota_esperada = 500000
@@ -91,13 +99,13 @@ class TestCalculoCuotaAhorro(unittest.TestCase):
 
     def testAbonoExtra(self):
         # ENTRADAS
-        meta = 10000000
-        interes = 0.01
+        meta_ahorro = 10000000
+        tasa_interes = 0.01
         plazo = 24
-        abono = 2000000
-        mes_abono = 24
+        abono_extra = 2000000
+        mes_del_abono = 24
 
-        cuota_calculada = logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+        cuota_calculada = logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
         # SALIDA ESPERADA
         cuota_esperada = 296587.78
@@ -107,13 +115,13 @@ class TestCalculoCuotaAhorro(unittest.TestCase):
 
     def testAbonoExtra2(self):
         # ENTRADAS
-        meta = 20000000
-        interes = 0.0083
+        meta_ahorro = 20000000
+        tasa_interes = 0.0083
         plazo = 36
-        abono = 5000000 
-        mes_abono = 36
+        abono_extra = 5000000
+        mes_del_abono = 36
 
-        cuota_calculada = logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+        cuota_calculada = logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
         # SALIDA ESPERADA
         cuota_esperada = 359226.16
@@ -123,55 +131,55 @@ class TestCalculoCuotaAhorro(unittest.TestCase):
 
     def testErrorMetaCero(self):
         # ENTRADAS
-        meta = 0
-        interes = 0.01
+        meta_ahorro = 0
+        tasa_interes = 0.01
         plazo = 24
-        abono = 0
-        mes_abono = None
+        abono_extra = 0
+        mes_del_abono = None
 
         # Verifica que se genere una excepcion cuando la meta es cero
         with self.assertRaises(logica_ahorro.MetaInvalida):
-            logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+            logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
     def testErrorPlazoCero(self):
         # ENTRADAS
-        meta = 10000000
-        interes = 0.01
+        meta_ahorro = 10000000
+        tasa_interes = 0.01
         plazo = 0
-        abono = 0
-        mes_abono = None
+        abono_extra = 0
+        mes_del_abono = None
 
         # Verifica que se genere una excepcion cuando el plazo es cero
         with self.assertRaises(logica_ahorro.PlazoInvalido):
-            logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
-
+            logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
     def testTasaNegativa(self):
         # ENTRADAS
-        meta = 10000000
-        interes = -0.02
+        meta_ahorro = 10000000
+        tasa_interes = -0.02
         plazo = 24
-        abono = 1000000
-        mes_abono = 9
+        abono_extra = 1000000
+        mes_del_abono = 9
 
         # Verifica que se genere una excepcion cuando la tasa es negativa
         with self.assertRaises(logica_ahorro.InteresInvalido):
-            logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+            logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
     def testPlazoNegativo(self):
         # ENTRADAS
-        meta = 20000000
-        interes = 0.01
+        meta_ahorro = 20000000
+        tasa_interes = 0.01
         plazo = -12
-        abono = 500000
-        mes_abono = 2
+        abono_extra = 500000
+        mes_del_abono = 2
 
         # Verifica que se genere una excepcion cuando el plazo es negativo
         with self.assertRaises(logica_ahorro.PlazoInvalido):
-            logica_ahorro.calcular_cuota(meta, interes, plazo, abono, mes_abono)
+            logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
 
-# Este fragmento de codigo permite ejecutar la prueb individualmente
+
+# Este fragmento de codigo permite ejecutar la pruebas individualmente
 # Va fijo en todas las pruebas unitarias
 if __name__ == '__main__':
-    # print( Payment.calcularCuota.__doc__)
     unittest.main()
+   

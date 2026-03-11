@@ -1,4 +1,20 @@
-# ===== interfaz_consola.py =====
+"""
+ ===== interfaz_consola.py =====
+ CLAVE 2 APLICADA: Funciones pequeñas con una sola responsabilidad
+ La función interfaz() original hacía todo: menú, lectura, cálculo y resultado.
+ Ahora cada responsabilidad tiene su propia función:
+   - mostrar_menu()           → solo imprime el menú
+   - pedir_datos_ahorro()     → solo recolecta los datos del usuario
+   - ejecutar_opcion()        → solo llama la lógica y muestra el resultado
+   - interfaz()               → solo coordina el flujo principal
+
+ CLAVE 1 APLICADA: Nombres que revelan intención
+ - "opcion" → "opcion_menu" para indicar que viene del menú
+ - "meta" → "meta_ahorro" consistente con logica_ahorro.py
+ - "interes" → "tasa_interes" consistente con logica_ahorro.py
+ - "abono" → "abono_extra" consistente con logica_ahorro.py
+ - "mes" → "mes_del_abono" consistente con logica_ahorro.py
+"""
 
 import srs.model.logica_ahorro as logica_ahorro
 
@@ -22,77 +38,65 @@ def pedir_int(mensaje):
 
 
 def preguntar_abono():
-    """Pregunta si desea agregar abono extra."""
-    opcion = input("¿Desea agregar un abono extra? (si/no): ").strip().lower()
-
-    if opcion == "si":
-        abono = pedir_float("Ingrese el valor del abono extra: ")
-        mes = pedir_int("Ingrese el mes en que realizará el abono: ")
-        return abono, mes
-
+    """Pregunta si desea agregar abono extra y retorna sus valores."""
+    opcion_abono = input("¿Desea agregar un abono extra? (si/no): ").strip().lower()
+    if opcion_abono == "si":
+        abono_extra = pedir_float("Ingrese el valor del abono extra: ")
+        mes_del_abono = pedir_int("Ingrese el mes en que realizará el abono: ")
+        return abono_extra, mes_del_abono
     return 0, None
 
 
 def mostrar_menu():
+    """Imprime las opciones disponibles del programa."""
     print("\n====== AHORRO PROGRAMADO ======")
     print("1. Calcular cuota mensual")
     print("2. Calcular total intereses")
     print("3. Salir")
 
 
+def pedir_datos_ahorro():
+    """Solicita al usuario todos los datos necesarios para el cálculo."""
+    print("\nIngrese los datos del ahorro")
+    meta_ahorro = pedir_float("Meta de ahorro: ")
+    tasa_interes = pedir_float("Tasa de interés (ej: 1 para 1%, 0.75 para 0.75%): ") / 100
+    plazo = pedir_int("Plazo en meses: ")
+    abono_extra, mes_del_abono = preguntar_abono()
+    return meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono
+
+
+def ejecutar_opcion(opcion_menu, meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono):
+    """Llama a la lógica correspondiente según la opción del menú y muestra el resultado."""
+    print("\n===== RESULTADO =====")
+    if opcion_menu == "1":
+        cuota = logica_ahorro.calcular_cuota(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
+        print(f"Cuota mensual necesaria: ${cuota:,.2f}")
+    elif opcion_menu == "2":
+        total_interes = logica_ahorro.calcular_total_interes(meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
+        print(f"Total intereses generados: ${total_interes:,.2f}")
+
+
 def interfaz():
+    """Coordina el flujo principal del programa: menú, entrada y ejecución."""
     while True:
-
         mostrar_menu()
+        opcion_menu = input("Seleccione una opción: ").strip()
 
-        opcion = input("Seleccione una opción: ").strip()
-
-        if opcion == "3":
+        if opcion_menu == "3":
             print("Saliendo del programa...")
             break
 
-        if opcion not in ["1", "2"]:
+        if opcion_menu not in ["1", "2"]:
             print("Opción inválida.")
             continue
 
-        print("\nIngrese los datos del ahorro")
-
-        meta = pedir_float("Meta de ahorro: ")
-        interes = float(pedir_float("Tasa de interés (ej: 1 para 1%, 0.75 para 0.75%): ") / 100)
-        plazo = pedir_int("Plazo en meses: ")
-
-        abono, mes_abono = preguntar_abono()
+        meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono = pedir_datos_ahorro()
 
         try:
-
-            if opcion == "1":
-                cuota = logica_ahorro.calcular_cuota(
-                    meta,
-                    interes,
-                    plazo,
-                    abono,
-                    mes_abono
-                )
-
-                print("\n===== RESULTADO =====")
-                print(f"Cuota mensual necesaria: ${cuota:,.2f}")
-
-            elif opcion == "2":
-
-                total_interes = logica_ahorro.calcular_total_interes(
-                    meta,
-                    interes,
-                    plazo,
-                    abono,
-                    mes_abono
-                )
-
-                print("\n===== RESULTADO =====")
-                print(f"Total intereses generados: ${total_interes:,.2f}")
-
-        except Exception as e:
+            ejecutar_opcion(opcion_menu, meta_ahorro, tasa_interes, plazo, abono_extra, mes_del_abono)
+        except Exception as error:
             print("\nSe produjo un error:")
-            print(e)
+            print(error)
 
 
 if __name__ == "__main__":
