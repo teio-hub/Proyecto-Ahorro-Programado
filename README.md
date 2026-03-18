@@ -3,12 +3,12 @@
 </h1>
 
 ---
-###  Creadores
+##  Creadores
 - María Paula Ospina Zabala
 - Alejandro Tello Giraldo
   
  --- 
- ### 👩‍💻 Persona entrevistada
+ ## 👩‍💻 Persona entrevistada
 - **Nombre:** Karen Londoño 
 - **Cargo:** Gerente de proyectos en una compañía financiera
 - **Experiencia relacionada:** Finanzas
@@ -16,12 +16,12 @@
 
 ---
 
-### 📖 Descripción del Proyecto
+## 📖 Descripción del Proyecto
 La **Calculadora de Ahorro Programado** es una aplicación diseñada para ayudar a las personas a planificar su ahorro mensual con el fin de alcanzar una meta financiera específica en un periodo de tiempo determinado.
 La aplicación permite calcular el valor que se debe ahorrar mensualmente y, además, ofrece la posibilidad de registrar **abonos extra** en cualquier momento y por cualquier cantidad, ajustando el ahorro restante de forma automática.
 
 ---
-### 🎯 Objetivo
+## 🎯 Objetivo
 Esta herramienta busca facilitar al usuario una ayuda para alcanzar su meta de ahorro de una manera sencilla, además de brindarle una planificación financiera personal que permita:
 -  Definir una meta de ahorro.
 -  Establecer un plazo en meses.
@@ -31,6 +31,7 @@ Esta herramienta busca facilitar al usuario una ayuda para alcanzar su meta de a
   
 ---
 ## ▶️ Funcionamiento
+
 ### Prerrequisitos
 
 Antes de comenzar, asegúrese de tener lo siguiente:
@@ -40,6 +41,9 @@ Antes de comenzar, asegúrese de tener lo siguiente:
 - La carpeta del proyecto descargada en su computador (`Proyecto-Ahorro-Programado`)
 
 ---
+
+## 🔎 Opción 1 — Desde la terminal (CMD / Bash)
+
 ### Paso 1 — Abrir la terminal
 
 **Windows:** Presione `Windows + R`, escriba `cmd` y presione Enter.
@@ -47,8 +51,6 @@ Antes de comenzar, asegúrese de tener lo siguiente:
 **Mac:** Presione `Cmd + Espacio`, busque **Terminal** y ábrala.
 
 **Linux:** Busque **Terminal** en el menú de aplicaciones.
-
----
 
 ### Paso 2 — Ir a la carpeta del proyecto
 
@@ -66,8 +68,6 @@ cd /Users/TuUsuario/Desktop/Proyecto-Ahorro-Programado
 
 > 💡 **Tip:** Puede arrastrar la carpeta del proyecto hacia la ventana de la terminal y la ruta aparecerá automáticamente.
 
----
-
 ### Paso 3 — Ejecutar el programa
 
 **Windows:**
@@ -81,6 +81,7 @@ python3 src/view/interfaz_consola.py
 ```
 
 Si todo está bien, verá el menú del programa en pantalla.
+
 ### Ejecutar las pruebas unitarias
 
 **Windows:**
@@ -99,8 +100,40 @@ python3 -m unittest test\*.py
 > ```
 > Luego vuelva a ejecutar el comando de pruebas.
 
-Si las pruebas pasaron correctamente, verá un mensaje con `passed` en verde  
+Si las pruebas pasaron correctamente, verá un mensaje con `passed` en verde 
 Si alguna falló, verá `FAILED` en rojo con una descripción del error 
+
+---
+
+## 🔎 Opción 2 — Desde un entorno de desarrollo (VS Code, PyCharm, etc.)
+
+### Paso 1 — Abrir el proyecto
+
+Abra su entorno de desarrollo y seleccione la opción **"Abrir carpeta"** (o *Open Folder*). Busque y seleccione la carpeta `Proyecto-Ahorro-Programado`.
+
+### Paso 2 — Seleccionar el intérprete de Python
+
+Asegúrese de que su entorno tenga configurado Python 3 como intérprete.
+
+**En VS Code:** Presione `Ctrl + Shift + P`, busque **"Python: Select Interpreter"** y elija la versión de Python 3 instalada en su equipo.
+
+**En PyCharm:** Vaya a `File > Settings > Project > Python Interpreter` y seleccione Python 3.
+
+### Paso 3 — Ejecutar el programa
+
+Abra el archivo `src/view/interfaz_consola.py` y ejecútelo:
+
+**En VS Code:** Presione el botón ▶️ en la esquina superior derecha, o haga clic derecho sobre el archivo y seleccione **"Run Python File"**.
+
+**En PyCharm:** Presione el botón ▶️ en la esquina superior derecha, o haga clic derecho sobre el archivo y seleccione **"Run"**.
+
+Si todo está bien, verá el menú del programa en el panel de terminal interno.
+
+### Ejecutar las pruebas unitarias
+
+Abra el archivo `test/test_ahorro.py` y ejecútelo de la misma forma que el paso anterior.
+
+> 💡 También puede ejecutar las pruebas desde la terminal integrada del entorno (`View > Terminal`) usando el mismo comando de la Opción 1.
 
 ---
 ## 📥 Entradas del Sistema
