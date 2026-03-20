@@ -1,7 +1,6 @@
 import sys
 sys.path.append("src")
-from view import interfaz_consola
-
+from model import logica_ahorro
 
 def pedir_float(mensaje):
     """Solicita un número decimal al usuario."""
