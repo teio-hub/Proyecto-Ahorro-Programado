@@ -14,27 +14,27 @@ class TestPlanes(unittest.TestCase):
 
     def test_1_insertar_1(self):
         plan = PlanAhorro(id_plan=None, cedula="123456", meta=10000000,
-                          tasa_interes=0.01, plazo=24, cuota_mensual=370734.72,
-                          fecha_creacion="2026-05-11")
+                      tasa_interes=0.01, plazo=24, cuota_mensual=370734.72,
+                      fecha_creacion="2026-05-11")
         PlanesController.insertar(plan)
-        buscado = PlanesController.buscar(1)
-        self.assertTrue(plan.is_equal(buscado))
+        buscados = PlanesController.buscar_por_cedula("123456")
+        self.assertTrue(plan.is_equal(buscados[0]))
 
     def test_2_insertar_2(self):
         plan = PlanAhorro(id_plan=None, cedula="654321", meta=5000000,
-                          tasa_interes=0.0075, plazo=12, cuota_mensual=399757.38,
-                          fecha_creacion="2026-05-11")
+                      tasa_interes=0.0075, plazo=12, cuota_mensual=399757.38,
+                      fecha_creacion="2026-05-11")
         PlanesController.insertar(plan)
-        buscado = PlanesController.buscar(2)
-        self.assertTrue(plan.is_equal(buscado))
+        buscados = PlanesController.buscar_por_cedula("654321")
+        self.assertTrue(plan.is_equal(buscados[0]))
 
     def test_3_insertar_3(self):
-        plan = PlanAhorro(id_plan=None, cedula="123456", meta=20000000,
-                          tasa_interes=0.0083, plazo=36, cuota_mensual=478968.21,
-                          fecha_creacion="2026-05-11")
+        plan = PlanAhorro(id_plan=None, cedula="111111", meta=20000000,
+                      tasa_interes=0.0083, plazo=36, cuota_mensual=478968.21,
+                      fecha_creacion="2026-05-11")
         PlanesController.insertar(plan)
-        buscado = PlanesController.buscar(3)
-        self.assertTrue(plan.is_equal(buscado))
+        buscados = PlanesController.buscar_por_cedula("111111")
+        self.assertTrue(plan.is_equal(buscados[0]))
 
     def test_4_modificar_1(self):
         plan = PlanAhorro(id_plan=1, cedula="123456", meta=10000000,
