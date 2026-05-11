@@ -11,7 +11,7 @@ class PlanAhorro:
 
     def is_equal(self, otro):
         return (self.cedula == otro.cedula and
-                self.meta == otro.meta and
-                self.tasa_interes == otro.tasa_interes and
-                self.plazo == otro.plazo and
-                self.cuota_mensual == otro.cuota_mensual)
+            self.meta == otro.meta and
+            self.tasa_interes == otro.tasa_interes and
+            self.plazo == otro.plazo and
+            round(float(self.cuota_mensual), 2) == round(float(otro.cuota_mensual), 2))
