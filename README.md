@@ -6,6 +6,8 @@
 ##  Creadores
 - María Paula Ospina Zabala
 - Alejandro Tello Giraldo
+- Hans Schoonewolff Otero
+- Carolina Flórez Salazar 
   
  --- 
  ## 👩‍💻 Persona entrevistada
