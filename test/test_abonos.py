@@ -7,7 +7,7 @@ from controller.abonos_controller import AbonosController
 
 class TestAbonos(unittest.TestCase):
 
-    
+    @staticmethod
     def setUpClass():
         AbonosController.borrar_tabla()
         AbonosController.crear_tabla()

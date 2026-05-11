@@ -7,7 +7,7 @@ from controller.planes_controller import PlanesController
 
 class TestPlanes(unittest.TestCase):
 
-    
+    @staticmethod
     def setUpClass():
         PlanesController.borrar_tabla()
         PlanesController.crear_tabla()

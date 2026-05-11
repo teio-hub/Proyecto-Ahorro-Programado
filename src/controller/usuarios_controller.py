@@ -28,11 +28,15 @@ class UsuariosController:
 
     def insertar(usuario: Usuario):
         cursor = UsuariosController.obtener_cursor()
-        consulta = f"""insert into usuarios (cedula, nombre, apellido, telefono, correo, direccion)
-                    values ('{usuario.cedula}', '{usuario.nombre}', '{usuario.apellido}',
-                    '{usuario.telefono}', '{usuario.correo}', '{usuario.direccion}')"""
-        cursor.execute(consulta)
-        cursor.connection.commit()
+        try:
+            consulta = f"""insert into usuarios (cedula, nombre, apellido, telefono, correo, direccion)
+                       values ('{usuario.cedula}', '{usuario.nombre}', '{usuario.apellido}',
+                       '{usuario.telefono}', '{usuario.correo}', '{usuario.direccion}')"""
+            cursor.execute(consulta)
+            cursor.connection.commit()
+        except Exception as e:
+            cursor.connection.rollback()
+            raise Exception(str(e))
 
     def buscar(cedula):
         cursor = UsuariosController.obtener_cursor()

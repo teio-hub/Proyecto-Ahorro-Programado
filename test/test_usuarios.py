@@ -2,11 +2,13 @@ import unittest
 import sys
 sys.path.append("src")
 
+from model import usuario
 from model.Usuario import Usuario
 from controller.usuarios_controller import UsuariosController
 
 class TestUsuarios(unittest.TestCase):
     
+    @staticmethod
     def setUpClass():
         UsuariosController.borrar_tabla()
         UsuariosController.crear_tabla()
@@ -33,10 +35,10 @@ class TestUsuarios(unittest.TestCase):
         self.assertTrue(usuario.is_equal(buscado))
 
     def test_modificar_1(self):
-        usuario = Usuario(cedula="123456", nombre="Maria Paula", apellido="Ospina",
-                          telefono="3001234567", correo="maria@correo.com", direccion="Calle 1")
+        usuario = Usuario(cedula="654321", nombre="Alejandro José", apellido="Tello",
+                         telefono="3107654321", correo="ale@correo.com", direccion="Carrera 2")
         UsuariosController.modificar(usuario)
-        buscado = UsuariosController.buscar("123456")
+        buscado = UsuariosController.buscar("654321")
         self.assertTrue(usuario.is_equal(buscado))
 
     def test_eliminar_1(self):
