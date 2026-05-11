@@ -2,7 +2,6 @@ import unittest
 import sys
 sys.path.append("src")
 
-from model import usuario
 from model.Usuario import Usuario
 from controller.usuarios_controller import UsuariosController
 
