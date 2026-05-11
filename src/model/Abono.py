@@ -9,6 +9,6 @@ class Abono:
 
     def is_equal(self, otro):
         return (self.id_plan == otro.id_plan and
-                self.mes_abono == otro.mes_abono and
-                self.valor_abono == otro.valor_abono and
-                self.nueva_cuota == otro.nueva_cuota)
+            int(self.mes_abono) == int(otro.mes_abono) and
+            round(float(self.valor_abono), 2) == round(float(otro.valor_abono), 2) and
+            round(float(self.nueva_cuota), 2) == round(float(otro.nueva_cuota), 2))
