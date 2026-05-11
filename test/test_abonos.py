@@ -34,8 +34,10 @@ class TestAbonos(unittest.TestCase):
         self.assertTrue(abono.is_equal(buscados[1]))
 
     def test_4_modificar_1(self):
-        abono = Abono(id_abono=1, id_plan=1, mes_abono=24,
-                      valor_abono=3000000, nueva_cuota=222440.84)
+        buscados = AbonosController.buscar_por_plan(1)
+        id_real = buscados[0].id_abono
+        abono = Abono(id_abono=id_real, id_plan=1, mes_abono=24,
+                  valor_abono=3000000, nueva_cuota=222440.84)
         AbonosController.modificar(abono)
         buscados = AbonosController.buscar_por_plan(1)
         self.assertTrue(abono.is_equal(buscados[0]))
