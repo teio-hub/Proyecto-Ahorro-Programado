@@ -9,6 +9,7 @@ class TestUsuarios(unittest.TestCase):
 
     @staticmethod
     def setUpClass():
+        print("Ejecutando setUpClass...")
         UsuariosController.borrar_tabla()
         UsuariosController.crear_tabla()
 
@@ -48,8 +49,8 @@ class TestUsuarios(unittest.TestCase):
         self.assertTrue(usuario.is_equal(buscado))
 
     def test_6_modificar_3(self):
-        usuario = Usuario(cedula="111111", nombre="Karen Sofía", apellido="Londoño",
-                         telefono="3209999999", correo="karensofía@correo.com", direccion="Avenida 3 #10-20")
+        usuario = Usuario(cedula="111111", nombre="Karen Sofia", apellido="Londono",
+                         telefono="3209999999", correo="karensofia@correo.com", direccion="Avenida 3 #10-20")
         UsuariosController.modificar(usuario)
         buscado = UsuariosController.buscar("111111")
         self.assertTrue(usuario.is_equal(buscado))
