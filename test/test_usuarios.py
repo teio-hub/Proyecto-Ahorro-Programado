@@ -9,9 +9,11 @@ class TestUsuarios(unittest.TestCase):
 
     @staticmethod
     def setUpClass():
-        print("Ejecutando setUpClass...")
+        print("Borrando tabla...")
         UsuariosController.borrar_tabla()
+        print("Creando tabla...")
         UsuariosController.crear_tabla()
+        print("Listo.")
 
     def test_1_insertar_1(self):
         usuario = Usuario(cedula="123456", nombre="Maria", apellido="Ospina",
