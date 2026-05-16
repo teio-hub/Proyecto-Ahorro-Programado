@@ -1,3 +1,3 @@
-drop table if exists abonos;
-drop table if exists planes_ahorro;
-drop table if exists usuarios;
+DROP TABLE IF EXISTS abonos;
+DROP TABLE IF EXISTS planes_ahorro;
+DROP TABLE IF EXISTS usuarios;
