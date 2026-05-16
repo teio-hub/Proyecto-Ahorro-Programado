@@ -1,4 +1,4 @@
-create table if not exists planes_ahorro (
+create table planes_ahorro (
   id_plan serial primary key not null,
   cedula varchar(20) not null,
   meta decimal not null,

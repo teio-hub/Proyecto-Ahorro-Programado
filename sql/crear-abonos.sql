@@ -1,4 +1,4 @@
-create table if not exists abonos (
+create table abonos (
   id_abono serial primary key not null,
   id_plan int not null,
   mes_abono int not null,
