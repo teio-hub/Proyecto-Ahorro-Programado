@@ -12,28 +12,28 @@ class TestAbonos(unittest.TestCase):
         AbonosController.borrar_tabla()
         AbonosController.crear_tabla()
 
-    def test_1_insertar_1(self):
+    def test_01_insertar_1(self):
         abono = Abono(id_abono=None, id_plan=1, mes_abono=24,
                       valor_abono=2000000, nueva_cuota=296587.78)
         AbonosController.insertar(abono)
         buscados = AbonosController.buscar_por_plan(1)
         self.assertTrue(abono.is_equal(buscados[0]))
 
-    def test_2_insertar_2(self):
+    def test_02_insertar_2(self):
         abono = Abono(id_abono=None, id_plan=2, mes_abono=12,
                       valor_abono=1000000, nueva_cuota=319805.90)
         AbonosController.insertar(abono)
         buscados = AbonosController.buscar_por_plan(2)
         self.assertTrue(abono.is_equal(buscados[0]))
 
-    def test_3_insertar_3(self):
+    def test_03_insertar_3(self):
         abono = Abono(id_abono=None, id_plan=1, mes_abono=36,
                       valor_abono=5000000, nueva_cuota=359226.16)
         AbonosController.insertar(abono)
         buscados = AbonosController.buscar_por_plan(1)
         self.assertTrue(abono.is_equal(buscados[1]))
 
-    def test_4_modificar_1(self):
+    def test_04_modificar_1(self):
         buscados = AbonosController.buscar_por_plan(2)
         id_real = buscados[0].id_abono
         abono = Abono(id_abono=id_real, id_plan=2, mes_abono=6,
@@ -42,16 +42,16 @@ class TestAbonos(unittest.TestCase):
         buscados = AbonosController.buscar_por_plan(2)
         self.assertTrue(abono.is_equal(buscados[0]))
 
-    def test_5_modificar_2(self):
+    def test_05_modificar_2(self):
         buscados = AbonosController.buscar_por_plan(1)
         id_real = buscados[0].id_abono
         abono = Abono(id_abono=id_real, id_plan=1, mes_abono=12,
-                     valor_abono=3000000, nueva_cuota=250000.00)
+                    valor_abono=3000000, nueva_cuota=250000.00)
         AbonosController.modificar(abono)
-        buscados = AbonosController.buscar_por_plan(1)
-        self.assertTrue(abono.is_equal(buscados[0]))
+        buscado = AbonosController.buscar(id_real)
+        self.assertTrue(abono.is_equal(buscado))
 
-    def test_6_modificar_3(self):
+    def test_06_modificar_3(self):
         buscados = AbonosController.buscar_por_plan(1)
         id_real = buscados[1].id_abono
         abono = Abono(id_abono=id_real, id_plan=1, mes_abono=18,
@@ -60,15 +60,15 @@ class TestAbonos(unittest.TestCase):
         buscados = AbonosController.buscar_por_plan(1)
         self.assertTrue(abono.is_equal(buscados[1]))
 
-    def test_7_buscar_1(self):
+    def test_07_buscar_1(self):
         buscados = AbonosController.buscar_por_plan(1)
         self.assertEqual(buscados[0].id_plan, 1)
 
-    def test_8_buscar_2(self):
+    def test_08_buscar_2(self):
         buscados = AbonosController.buscar_por_plan(2)
         self.assertEqual(buscados[0].id_plan, 2)
 
-    def test_9_buscar_3(self):
+    def test_09_buscar_3(self):
         buscados = AbonosController.buscar_por_plan(1)
         self.assertEqual(buscados[1].id_plan, 1)
 
