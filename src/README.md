@@ -1,6 +1,4 @@
-###
-
-Aplicación para gestionar planes de ahorro, usuarios y abonos, con interfaz gráfica en Kivy y base de datos PostgreSQL en Render.
+# Aplicación para gestionar planes de ahorro, usuarios y abonos, con interfaz gráfica en Kivy y base de datos PostgreSQL en Render.
 
 ---
 
@@ -89,6 +87,7 @@ python test/test_abonos.py
 
 ---
 
+
 ## 8. Estructura del proyecto
 
 ```
@@ -103,17 +102,25 @@ Proyecto-Ahorro-Programado/
 │   │   ├── usuarios_controller.py
 │   │   ├── planes_controller.py
 │   │   └── abonos_controller.py
+|   ├── README
 │   ├── model/
-│   │   ├── Usuario.py
+│   │   ├── __init__.py
+│   │   ├── Abono.py
+│   │   ├── logica_ahorro.py
 │   │   ├── PlanAhorro.py
-│   │   └── Abono.py
+│   │   └── Usuario.py
 │   └── view/
+│       ├── __init__.py
+│       ├── ahorros_gui.py
 │       ├── gestion_gui.py
-│       └── ahorros_gui.py
+│       └── interfaz_consola.py
 ├── test/
-│   ├── test_usuarios.py
+│   ├── __init__.py
+│   ├── test_abonos.py
+│   ├── test_ahorro.py
 │   ├── test_planes.py
-│   └── test_abonos.py
+│   └── test_usuarios.py
 ├── secret_config_sample.py
+├── secret_config.py
 └── README.md
 ```
