@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+    <form action="/buscar_abono">
+        <h2>Buscar un Abono</h2>
+        Escriba el ID del abono:
+        <input type="text" name="id_abono" />
+        <button>Buscar</button>
+    </form>
+
+    <form action="/insertar_abono">
+        <h2>Insertar un Abono</h2>
+        <table>
+            <tr>
+                <td>ID Plan</td>
+                <td><input type="number" name="id_plan" /></td>
+            </tr>
+            <tr>
+                <td>Mes del abono</td>
+                <td><input type="number" name="mes_abono" /></td>
+            </tr>
+            <tr>
+                <td>Valor abono ($)</td>
+                <td><input type="text" name="valor_abono" /></td>
+            </tr>
+            <tr>
+                <td>Nueva cuota ($)</td>
+                <td><input type="text" name="nueva_cuota" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Guardar" />
+    </form>
+
+    <form action="/modificar_abono">
+        <h2>Modificar un Abono</h2>
+        Escriba el ID del abono:
+        <input type="text" name="id_abono" />
+        <button>Buscar para modificar</button>
+    </form>
+
+    <br />
+
+    <div>
+        Si es la primera vez que usa esta aplicación, <a href="/crear_tablas">haga click
+        aquí para crear las tablas en la base de datos</a>
+    </div>
+
+</body>
+</html>
