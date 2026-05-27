@@ -14,6 +14,10 @@ server = Flask(__name__)
 def inicio():
     return render_template("planes.html")
 
+@server.route("/planes")
+def planes():
+    return render_template("planes.html")
+
 # Crea las tablas en la base de datos
 @server.route("/crear_tablas")
 def crear_tablas():
