@@ -3,7 +3,6 @@
 <head></head>
 <body>
     <h2>Modificar Plan de Ahorro</h2>
-    {% for plan in planes %}
     <form action="/actualizar_plan">
         <table>
             <tr>
@@ -37,7 +36,6 @@
         </table>
         <input type="submit" value="Guardar cambios" />
     </form>
-    {% endfor %}
 
     <a href="/">Volver al inicio</a>
 </body>
