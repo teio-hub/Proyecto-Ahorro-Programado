@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <h2>Modificar Usuario</h2>
+    <form action="/actualizar_usuario">
+        <table>
+            <tr>
+                <td>Cédula</td>
+                <td><input type="text" name="cedula" value="{{ usuario.cedula }}" readonly /></td>
+            </tr>
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" name="nombre" value="{{ usuario.nombre }}" /></td>
+            </tr>
+            <tr>
+                <td>Apellido</td>
+                <td><input type="text" name="apellido" value="{{ usuario.apellido }}" /></td>
+            </tr>
+            <tr>
+                <td>Teléfono</td>
+                <td><input type="text" name="telefono" value="{{ usuario.telefono }}" /></td>
+            </tr>
+            <tr>
+                <td>Correo</td>
+                <td><input type="text" name="correo" value="{{ usuario.correo }}" /></td>
+            </tr>
+            <tr>
+                <td>Dirección</td>
+                <td><input type="text" name="direccion" value="{{ usuario.direccion }}" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Guardar cambios" />
+    </form>
+
+    <a href="/usuarios">Volver</a>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+    <form action="/buscar_usuario">
+        <h2>Buscar un Usuario</h2>
+        Escriba la cédula:
+        <input type="text" name="cedula" />
+        <button>Buscar</button>
+    </form>
+
+    <form action="/insertar_usuario">
+        <h2>Insertar un Usuario</h2>
+        <table>
+            <tr>
+                <td>Cédula</td>
+                <td><input type="text" name="cedula" /></td>
+            </tr>
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" name="nombre" /></td>
+            </tr>
+            <tr>
+                <td>Apellido</td>
+                <td><input type="text" name="apellido" /></td>
+            </tr>
+            <tr>
+                <td>Teléfono</td>
+                <td><input type="text" name="telefono" /></td>
+            </tr>
+            <tr>
+                <td>Correo</td>
+                <td><input type="text" name="correo" /></td>
+            </tr>
+            <tr>
+                <td>Dirección</td>
+                <td><input type="text" name="direccion" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Guardar" />
+    </form>
+
+    <form action="/modificar_usuario">
+        <h2>Modificar un Usuario</h2>
+        Escriba la cédula:
+        <input type="text" name="cedula" />
+        <button>Buscar para modificar</button>
+    </form>
+
+    <br />
+
+    <div>
+        Si es la primera vez que usa esta aplicación, <a href="/crear_tablas">haga click
+        aquí para crear las tablas en la base de datos</a>
+    </div>
+
+</body>
+</html>
