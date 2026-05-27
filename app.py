@@ -41,7 +41,7 @@ def insertar_plan():
         fecha_creacion=request.args["fecha_creacion"]
     )
     id_plan = PlanesController.insertar(plan)
-    return f"Se guardó exitosamente el plan para la cédula: {request.args['cedula']} con el ID: {id_plan}."
+    return f"Se guardó exitosamente el plan para la cédula: {request.args['cedula']} con el ID: {id_plan}.<br /><a href='/'>Volver al inicio</a>"
 
 # Busca un plan por ID y muestra sus datos
 @server.route("/buscar_plan")
@@ -78,7 +78,14 @@ def actualizar_plan():
         fecha_creacion=request.args["fecha_creacion"]
     )
     PlanesController.modificar(plan)
-    return f"Plan modificado exitosamente."
+    return f"Plan modificado exitosamente. <a href='/'>Volver al inicio</a>"
+
+# Elimina un plan de la base de datos
+@server.route("/eliminar_plan")
+def eliminar_plan():
+    id_plan = int(request.args["id_plan"])
+    PlanesController.eliminar(id_plan)
+    return "Plan eliminado exitosamente. <a href='/'>Volver al inicio</a>"
 
 #MODULO USUARIOS
 

@@ -34,12 +34,19 @@
                 <td><input type="date" name="fecha_creacion" value="{{ plan.fecha_creacion }}" /></td>
             </tr>
         </table>
-        <br />
         <input type="submit" value="Guardar cambios" />
     </form>
 
     <br />
 
+    <form action="/eliminar_plan">
+        <input type="hidden" name="id_plan" value="{{ plan.id_plan }}" />
+        <input type="submit" value="Eliminar plan" />
+    </form>
+
+    <br />
+
     <a href="/">Volver al inicio</a>
+
 </body>
 </html>
