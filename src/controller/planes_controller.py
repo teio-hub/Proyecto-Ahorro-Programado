@@ -29,10 +29,11 @@ class PlanesController:
     def insertar(plan: PlanAhorro):
         cursor = PlanesController.obtener_cursor()
         consulta = f"""insert into planes_ahorro (cedula, meta, tasa_interes, plazo, cuota_mensual, fecha_creacion)
-                    values ('{plan.cedula}', {plan.meta}, {plan.tasa_interes}, {plan.plazo},
-                    {plan.cuota_mensual}, '{plan.fecha_creacion}')"""
+                values ('{plan.cedula}', {plan.meta}, {plan.tasa_interes}, {plan.plazo},
+                {plan.cuota_mensual}, '{plan.fecha_creacion}') returning id_plan"""
         cursor.execute(consulta)
         cursor.connection.commit()
+        return cursor.fetchone()[0]
 
     def buscar(id_plan):
         cursor = PlanesController.obtener_cursor()
