@@ -1,44 +1,35 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-</head>
-
+<head></head>
 <body>
-
+    <h2>Planes encontrados</h2>
     <table>
-        <tr>
-            <td>ID Plan</td>
-            <td>{{ plan.id_plan }}</td>
-        </tr>
-        <tr>
-            <td>Cédula</td>
-            <td>{{ plan.cedula }}</td>
-        </tr>
-        <tr>
-            <td>Meta ($)</td>
-            <td>{{ plan.meta }}</td>
-        </tr>
-        <tr>
-            <td>Tasa de interés</td>
-            <td>{{ plan.tasa_interes }}</td>
-        </tr>
-        <tr>
-            <td>Plazo (meses)</td>
-            <td>{{ plan.plazo }}</td>
-        </tr>
-        <tr>
-            <td>Cuota mensual ($)</td>
-            <td>{{ plan.cuota_mensual }}</td>
-        </tr>
-        <tr>
-            <td>Fecha de creación</td>
-            <td>{{ plan.fecha_creacion }}</td>
-        </tr>
+        <thead>
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>Cédula</b></td>
+                <td><b>Meta ($)</b></td>
+                <td><b>Tasa</b></td>
+                <td><b>Plazo</b></td>
+                <td><b>Cuota mensual ($)</b></td>
+                <td><b>Fecha creación</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plan in planes %}
+            <tr>
+                <td>{{ plan.id_plan }}</td>
+                <td>{{ plan.cedula }}</td>
+                <td>{{ plan.meta }}</td>
+                <td>{{ plan.tasa_interes }}</td>
+                <td>{{ plan.plazo }}</td>
+                <td>{{ plan.cuota_mensual }}</td>
+                <td>{{ plan.fecha_creacion }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 
     <a href="/">Volver al inicio</a>
-
 </body>
-
 </html>

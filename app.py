@@ -39,11 +39,13 @@ def insertar_plan():
 @server.route("/buscar_plan")
 def buscar_plan():
     try:
-        id_plan = int(request.args["id_plan"])
-        plan = PlanesController.buscar(id_plan)
-        return render_template("plan_buscado.html", plan=plan)
+        cedula = request.args["cedula"]
+        planes = PlanesController.buscar_por_cedula(cedula)
+        if len(planes) == 0:
+            return "No se encontró ningún plan para esa cédula."
+        return render_template("plan_buscado.html", planes=planes)
     except Exception as e:
-        return "No se encontró ningún plan con ese ID."
+        return "No se encontró ningún plan para esa cédula."
     
 if __name__ == '__main__':
     server.run(debug=True)
