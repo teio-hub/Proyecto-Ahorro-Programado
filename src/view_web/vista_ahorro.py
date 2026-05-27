@@ -124,7 +124,7 @@ def buscar_usuario():
         usuario = UsuariosController.buscar(cedula)
         return render_template("usuario_buscado.html", usuario=usuario)
     except Exception as e:
-        return "No se encontró ningún usuario con esa cédula."
+        return "No se encontró ningún usuario con esa cédula. <br /><a href='/'>Volver al inicio</a>"
 
 # Muestra el formulario de modificar con los datos actuales
 @blueprint.route("/modificar_usuario")
@@ -134,7 +134,7 @@ def modificar_usuario():
         usuario = UsuariosController.buscar(cedula)
         return render_template("usuario_modificar.html", usuario=usuario)
     except Exception as e:
-        return "No se encontró ningún usuario con esa cédula."
+        return "No se encontró ningún usuario con esa cédula. <br /><a href='/'>Volver al inicio</a>"
 
 # Guarda los cambios del usuario modificado
 @blueprint.route("/actualizar_usuario")
@@ -177,7 +177,7 @@ def buscar_abono():
         abono = AbonosController.buscar(id_abono)
         return render_template("abono_buscado.html", abono=abono)
     except Exception as e:
-        return "No se encontró ningún abono con ese ID."
+        return "No se encontró ningún abono con ese ID. <br /><a href='/'>Volver al inicio</a>"
 
 # Muestra el formulario de modificar con los datos actuales
 @blueprint.route("/modificar_abono")
@@ -187,7 +187,7 @@ def modificar_abono():
         abono = AbonosController.buscar(id_abono)
         return render_template("abono_modificar.html", abono=abono)
     except Exception as e:
-        return "No se encontró ningún abono con ese ID."
+        return "No se encontró ningún abono con ese ID. <br /><a href='/'>Volver al inicio</a>""
 
 # Guarda los cambios del abono modificado
 @blueprint.route("/actualizar_abono")
