@@ -38,9 +38,12 @@ def insertar_plan():
 # Busca un plan por ID y muestra sus datos
 @server.route("/buscar_plan")
 def buscar_plan():
-    id_plan = int(request.args["id_plan"])
-    plan = PlanesController.buscar(id_plan)
-    return render_template("plan_buscado.html", plan=plan)
-
+    try:
+        id_plan = int(request.args["id_plan"])
+        plan = PlanesController.buscar(id_plan)
+        return render_template("plan_buscado.html", plan=plan)
+    except Exception as e:
+        return "No se encontró ningún plan con ese ID."
+    
 if __name__ == '__main__':
     server.run(debug=True)
