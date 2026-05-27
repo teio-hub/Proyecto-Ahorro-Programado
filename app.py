@@ -14,8 +14,11 @@ def inicio():
 # Crea las tablas en la base de datos
 @server.route("/crear_tablas")
 def crear_tablas():
-    PlanesController.crear_tabla()
-    return "Tablas creadas exitosamente. Ya puede usar la aplicación"
+    try:
+        PlanesController.crear_tabla()
+        return "Tablas creadas exitosamente. Ya puede usar la aplicación"
+    except Exception as e:
+        return "Las tablas ya existen. Ya puede usar la aplicación"
 
 # Inserta un plan en la base de datos
 @server.route("/insertar_plan")
