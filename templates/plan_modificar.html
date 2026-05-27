@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <h2>Modificar Plan de Ahorro</h2>
+    {% for plan in planes %}
+    <form action="/actualizar_plan">
+        <table>
+            <tr>
+                <td>ID Plan</td>
+                <td><input type="text" name="id_plan" value="{{ plan.id_plan }}" readonly /></td>
+            </tr>
+            <tr>
+                <td>Cédula</td>
+                <td><input type="text" name="cedula" value="{{ plan.cedula }}" /></td>
+            </tr>
+            <tr>
+                <td>Meta ($)</td>
+                <td><input type="text" name="meta" value="{{ plan.meta }}" /></td>
+            </tr>
+            <tr>
+                <td>Tasa de interés</td>
+                <td><input type="text" name="tasa_interes" value="{{ plan.tasa_interes }}" /></td>
+            </tr>
+            <tr>
+                <td>Plazo (meses)</td>
+                <td><input type="number" name="plazo" value="{{ plan.plazo }}" /></td>
+            </tr>
+            <tr>
+                <td>Cuota mensual ($)</td>
+                <td><input type="text" name="cuota_mensual" value="{{ plan.cuota_mensual }}" /></td>
+            </tr>
+            <tr>
+                <td>Fecha creación</td>
+                <td><input type="date" name="fecha_creacion" value="{{ plan.fecha_creacion }}" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Guardar cambios" />
+    </form>
+    {% endfor %}
+
+    <a href="/">Volver al inicio</a>
+</body>
+</html>

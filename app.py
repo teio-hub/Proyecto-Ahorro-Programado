@@ -47,5 +47,30 @@ def buscar_plan():
     except Exception as e:
         return "No se encontró ningún plan para esa cédula."
     
+# Muestra el formulario de modificar con los datos actuales del plan
+@server.route("/modificar_plan")
+def modificar_plan():
+    try:
+        id_plan = int(request.args["id_plan"])
+        plan = PlanesController.buscar(id_plan)
+        return render_template("plan_modificar.html", plan=plan)
+    except Exception as e:
+        return "No se encontró ningún plan con ese ID."
+
+# Guarda los cambios del plan modificado
+@server.route("/actualizar_plan")
+def actualizar_plan():
+    plan = PlanAhorro(
+        id_plan=int(request.args["id_plan"]),
+        cedula=request.args["cedula"],
+        meta=float(request.args["meta"].replace(".", "")),
+        tasa_interes=float(request.args["tasa_interes"]),
+        plazo=int(request.args["plazo"]),
+        cuota_mensual=float(request.args["cuota_mensual"].replace(".", "")),
+        fecha_creacion=request.args["fecha_creacion"]
+    )
+    PlanesController.modificar(plan)
+    return f"Plan modificado exitosamente."
+    
 if __name__ == '__main__':
     server.run(debug=True)
