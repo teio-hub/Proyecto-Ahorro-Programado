@@ -33,7 +33,7 @@ def insertar_plan():
         fecha_creacion=request.args["fecha_creacion"]
     )
     id_plan = PlanesController.insertar(plan)
-    return f"Se guardó exitosamente el plan. Su ID es: {id_plan}"
+    return f"Se guardó exitosamente el plan para la cédula: {request.args['cedula']}"
 
 # Busca un plan por ID y muestra sus datos
 @server.route("/buscar_plan")
