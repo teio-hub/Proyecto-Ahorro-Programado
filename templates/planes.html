@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <form action="/buscar_plan">
+        <h2>Buscar un Plan de Ahorro</h2>
+        Escriba el ID del plan:
+        <input type="text" name="id_plan" />
+        <button>Buscar</button>
+    </form>
+
+    <form action="/insertar_plan">
+        <h2>Insertar un Plan de Ahorro</h2>
+        <table>
+            <tr>
+                <td>Cédula</td>
+                <td><input type="text" name="cedula" /></td>
+            </tr>
+            <tr>
+                <td>Meta </td>
+                <td><input type="number" name="meta" /></td>
+            </tr>
+            <tr>
+                <td>Tasa de interés mensual</td>
+                <td><input type="number" name="tasa_interes" step="0.001" /></td>
+            </tr>
+            <tr>
+                <td>Plazo (meses)</td>
+                <td><input type="number" name="plazo" /></td>
+            </tr>
+            <tr>
+                <td>Cuota mensual </td>
+                <td><input type="number" name="cuota_mensual" step="0.01" /></td>
+            </tr>
+            <tr>
+                <td>Fecha de creación</td>
+                <td><input type="date" name="fecha_creacion" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Guardar" />
+    </form>
+
+    <div>
+        Si es la primera vez que usa esta aplicación, <a href="/crear_tablas">haga click
+        aquí para crear las tablas en la base de datos</a>
+    </div>
+
+</body>
+
+</html>
