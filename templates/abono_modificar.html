@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <h2>Modificar Abono</h2>
+    <form action="/actualizar_abono">
+        <table>
+            <tr>
+                <td>ID Abono</td>
+                <td><input type="text" name="id_abono" value="{{ abono.id_abono }}" readonly /></td>
+            </tr>
+            <tr>
+                <td>ID Plan</td>
+                <td><input type="number" name="id_plan" value="{{ abono.id_plan }}" /></td>
+            </tr>
+            <tr>
+                <td>Mes del abono</td>
+                <td><input type="number" name="mes_abono" value="{{ abono.mes_abono }}" /></td>
+            </tr>
+            <tr>
+                <td>Valor abono ($)</td>
+                <td><input type="text" name="valor_abono" value="{{ abono.valor_abono }}" /></td>
+            </tr>
+            <tr>
+                <td>Nueva cuota ($)</td>
+                <td><input type="text" name="nueva_cuota" value="{{ abono.nueva_cuota }}" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Guardar cambios" />
+    </form>
+
+    <br />
+
+    <form action="/eliminar_abono">
+        <input type="hidden" name="id_abono" value="{{ abono.id_abono }}" />
+        <input type="submit" value="Eliminar abono" />
+    </form>
+
+    <br />
+
+    <a href="/">Volver al inicio</a>
+
+</body>
+</html>
