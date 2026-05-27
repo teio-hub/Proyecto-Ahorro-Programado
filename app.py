@@ -26,10 +26,10 @@ def insertar_plan():
     plan = PlanAhorro(
         id_plan=None,
         cedula=request.args["cedula"],
-        meta=float(request.args["meta"]),
+        meta=float(request.args["meta"].replace(".", "")),
         tasa_interes=float(request.args["tasa_interes"]),
         plazo=int(request.args["plazo"]),
-        cuota_mensual=float(request.args["cuota_mensual"]),
+        cuota_mensual=float(request.args["cuota_mensual"].replace(".", "")),
         fecha_creacion=request.args["fecha_creacion"]
     )
     PlanesController.insertar(plan)
