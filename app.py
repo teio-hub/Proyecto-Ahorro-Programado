@@ -6,6 +6,8 @@ from controller.planes_controller import PlanesController
 from model.PlanAhorro import PlanAhorro
 from controller.usuarios_controller import UsuariosController
 from model.Usuario import Usuario
+from controller.abonos_controller import AbonosController
+from model.Abono import Abono
 
 server = Flask(__name__)
 
@@ -24,6 +26,7 @@ def crear_tablas():
     try:
         PlanesController.crear_tabla()
         UsuariosController.crear_tabla()
+        AbonosController.crear_tabla()
         return "Tablas creadas exitosamente. Ya puede usar la aplicación"
     except Exception as e:
         return "Las tablas ya existen. Ya puede usar la aplicación"
@@ -142,5 +145,64 @@ def actualizar_usuario():
     UsuariosController.modificar(usuario)
     return "Usuario modificado exitosamente."
     
+#MODULO ABONOS
+# Muestra el formulario de abonos
+@server.route("/abonos")
+def abonos():
+    return render_template("abonos.html")
+
+# Inserta un abono en la base de datos
+@server.route("/insertar_abono")
+def insertar_abono():
+    abono = Abono(
+        id_abono=None,
+        id_plan=int(request.args["id_plan"]),
+        mes_abono=int(request.args["mes_abono"]),
+        valor_abono=float(request.args["valor_abono"].replace(".", "")),
+        nueva_cuota=float(request.args["nueva_cuota"].replace(".", ""))
+    )
+    AbonosController.insertar(abono)
+    return f"Se guardó exitosamente el abono para el plan ID: {request.args['id_plan']}.<br /><a href='/'>Volver al inicio</a>"
+
+# Busca un abono por ID
+@server.route("/buscar_abono")
+def buscar_abono():
+    try:
+        id_abono = int(request.args["id_abono"])
+        abono = AbonosController.buscar(id_abono)
+        return render_template("abono_buscado.html", abono=abono)
+    except Exception as e:
+        return "No se encontró ningún abono con ese ID."
+
+# Muestra el formulario de modificar con los datos actuales
+@server.route("/modificar_abono")
+def modificar_abono():
+    try:
+        id_abono = int(request.args["id_abono"])
+        abono = AbonosController.buscar(id_abono)
+        return render_template("abono_modificar.html", abono=abono)
+    except Exception as e:
+        return "No se encontró ningún abono con ese ID."
+
+# Guarda los cambios del abono modificado
+@server.route("/actualizar_abono")
+def actualizar_abono():
+    abono = Abono(
+        id_abono=int(request.args["id_abono"]),
+        id_plan=int(request.args["id_plan"]),
+        mes_abono=int(request.args["mes_abono"]),
+        valor_abono=float(request.args["valor_abono"].replace(".", "")),
+        nueva_cuota=float(request.args["nueva_cuota"].replace(".", ""))
+    )
+    AbonosController.modificar(abono)
+    return "Abono modificado exitosamente. <a href='/'>Volver al inicio</a>"
+
+# Elimina un abono de la base de datos
+@server.route("/eliminar_abono")
+def eliminar_abono():
+    id_abono = int(request.args["id_abono"])
+    AbonosController.eliminar(id_abono)
+    return "Abono eliminado exitosamente. <a href='/'>Volver al inicio</a>"
+
 if __name__ == '__main__':
     server.run(debug=True)
