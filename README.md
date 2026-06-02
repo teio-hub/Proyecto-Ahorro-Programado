@@ -88,12 +88,12 @@ Si todo está bien, verá el menú del programa en pantalla.
 
 **Windows:**
 ```cmd
-python -m unittest test\*.py
+python -m unittest discover -s test
 ```
 
 **Mac / Linux:**
 ```bash
-python3 -m unittest test\*.py
+python3 -m unittest discover -s test
 ```
 
 > ⚠️ Si aparece el error `pytest: command not found`, instálelo primero con:
