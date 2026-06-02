@@ -16,10 +16,11 @@ from model.Abono import Abono
 #- Carpeta donde se almacenan los templates
 blueprint = Blueprint("vista_ahorro",__name__)
 
-#MODULO PLANES
 @blueprint.route("/")
 def inicio():
-    return render_template("planes.html")
+    return render_template("pagina_inicio.html")
+
+#MODULO PLANES
 
 @blueprint.route("/planes")
 def planes():
@@ -49,7 +50,7 @@ def insertar_plan():
         fecha_creacion=request.args["fecha_creacion"]
     )
     id_plan = PlanesController.insertar(plan)
-    return f"Se guardó exitosamente el plan para la cédula: {request.args['cedula']} con el ID: {id_plan}.<br /><a href='/'>Volver al inicio</a>"
+    return f"Se guardó exitosamente el plan para la cédula: {request.args['cedula']} con el ID: {id_plan}. <br /><a href='/planes'>Volver</a>"
 
 # Busca un plan por ID y muestra sus datos
 @blueprint.route("/buscar_plan")
@@ -61,7 +62,7 @@ def buscar_plan():
             return "No se encontró ningún plan para esa cédula."
         return render_template("plan_buscado.html", planes=planes)
     except Exception as e:
-        return "No se encontró ningún plan para esa cédula."
+        return "No se encontró ningún plan para esa cédula. <br /><a href='/planes'>Volver</a>"
     
 # Muestra el formulario de modificar con los datos actuales del plan
 @blueprint.route("/modificar_plan")
@@ -71,7 +72,7 @@ def modificar_plan():
         plan = PlanesController.buscar(id_plan)
         return render_template("plan_modificar.html", plan=plan)
     except Exception as e:
-        return "No se encontró ningún plan con ese ID."
+        return "No se encontró ningún plan con ese ID. <br /><a href='/planes'>Volver</a>"
 
 # Guarda los cambios del plan modificado
 @blueprint.route("/actualizar_plan")
@@ -86,14 +87,14 @@ def actualizar_plan():
         fecha_creacion=request.args["fecha_creacion"]
     )
     PlanesController.modificar(plan)
-    return f"Plan modificado exitosamente. <a href='/'>Volver al inicio</a>"
+    return f"Plan modificado exitosamente. <a href='/planes'>Volver</a>"
 
 # Elimina un plan de la base de datos
 @blueprint.route("/eliminar_plan")
 def eliminar_plan():
     id_plan = int(request.args["id_plan"])
     PlanesController.eliminar(id_plan)
-    return "Plan eliminado exitosamente. <a href='/'>Volver al inicio</a>"
+    return "Plan eliminado exitosamente. <a href='/planes'>Volver</a>"
 
 #MODULO USUARIOS
 
@@ -105,16 +106,20 @@ def usuarios():
 # Inserta un usuario en la base de datos
 @blueprint.route("/insertar_usuario")
 def insertar_usuario():
-    usuario = Usuario(
-        cedula=request.args["cedula"],
-        nombre=request.args["nombre"],
-        apellido=request.args["apellido"],
-        telefono=request.args["telefono"],
-        correo=request.args["correo"],
-        direccion=request.args["direccion"]
-    )
-    UsuariosController.insertar(usuario)
-    return f"Se guardó exitosamente el usuario con cédula: {request.args['cedula']}"
+    try:
+        usuario = Usuario(
+            cedula=request.args["cedula"],
+            nombre=request.args["nombre"],
+            apellido=request.args["apellido"],
+            telefono=request.args["telefono"],
+            correo=request.args["correo"],
+            direccion=request.args["direccion"]
+        )
+        UsuariosController.insertar(usuario)
+        return f"Se guardó exitosamente el usuario con cédula: {request.args['cedula']}.<br /><a href='/usuarios'>Volver</a>"
+    except Exception:
+        UsuariosController.modificar(usuario)
+        return f"El usuario ya existía, se actualizaron sus datos.<br /><a href='/usuarios'>Volver</a>"
 
 # Busca un usuario por cédula
 @blueprint.route("/buscar_usuario")
@@ -124,7 +129,7 @@ def buscar_usuario():
         usuario = UsuariosController.buscar(cedula)
         return render_template("usuario_buscado.html", usuario=usuario)
     except Exception as e:
-        return "No se encontró ningún usuario con esa cédula. <br /><a href='/'>Volver al inicio</a>"
+        return "No se encontró ningún usuario con esa cédula. <br /><a href='/usuarios'>Volver</a>"
 
 # Muestra el formulario de modificar con los datos actuales
 @blueprint.route("/modificar_usuario")
@@ -134,7 +139,7 @@ def modificar_usuario():
         usuario = UsuariosController.buscar(cedula)
         return render_template("usuario_modificar.html", usuario=usuario)
     except Exception as e:
-        return "No se encontró ningún usuario con esa cédula. <br /><a href='/'>Volver al inicio</a>"
+        return "No se encontró ningún usuario con esa cédula. <br /><a href='/usuarios'>Volver</a>"
 
 # Guarda los cambios del usuario modificado
 @blueprint.route("/actualizar_usuario")
@@ -148,7 +153,7 @@ def actualizar_usuario():
         direccion=request.args["direccion"]
     )
     UsuariosController.modificar(usuario)
-    return "Usuario modificado exitosamente."
+    return "Usuario modificado exitosamente. <br /><a href='/usuarios'>Volver</a>"
     
 #MODULO ABONOS
 # Muestra el formulario de abonos
@@ -164,10 +169,12 @@ def insertar_abono():
         id_plan=int(request.args["id_plan"]),
         mes_abono=int(request.args["mes_abono"]),
         valor_abono=float(request.args["valor_abono"].replace(".", "")),
-        nueva_cuota=float(request.args["nueva_cuota"].replace(".", ""))
+        nueva_cuota=float(request.args.get("nueva_cuota", "0").replace(".", ""))
     )
-    AbonosController.insertar(abono)
-    return f"Se guardó exitosamente el abono para el plan ID: {request.args['id_plan']}.<br /><a href='/'>Volver al inicio</a>"
+    id_abono = AbonosController.insertar(abono)
+    return f"Se guardó exitosamente el abono. Su ID es: {id_abono}.<br /><a href='/abonos'>Volver</a>"
+
+    
 
 # Busca un abono por ID
 @blueprint.route("/buscar_abono")
@@ -177,7 +184,7 @@ def buscar_abono():
         abono = AbonosController.buscar(id_abono)
         return render_template("abono_buscado.html", abono=abono)
     except Exception as e:
-        return "No se encontró ningún abono con ese ID. <br /><a href='/'>Volver al inicio</a>"
+        return "No se encontró ningún abono con ese ID. <br /><a href='/abonos'>Volver</a>"
 
 # Muestra el formulario de modificar con los datos actuales
 @blueprint.route("/modificar_abono")
@@ -187,7 +194,7 @@ def modificar_abono():
         abono = AbonosController.buscar(id_abono)
         return render_template("abono_modificar.html", abono=abono)
     except Exception as e:
-        return "No se encontró ningún abono con ese ID. <br /><a href='/'>Volver al inicio</a>"
+        return "No se encontró ningún abono con ese ID. <br /><a href='/abonos'>Volver</a>"
 
 # Guarda los cambios del abono modificado
 @blueprint.route("/actualizar_abono")
@@ -200,14 +207,14 @@ def actualizar_abono():
         nueva_cuota=float(request.args["nueva_cuota"].replace(".", ""))
     )
     AbonosController.modificar(abono)
-    return "Abono modificado exitosamente. <br /><a href='/'>Volver al inicio</a>"
+    return "Abono modificado exitosamente. <br /><a href='/abonos'>Volver</a>"
 
 # Elimina un abono de la base de datos
 @blueprint.route("/eliminar_abono")
 def eliminar_abono():
     id_abono = int(request.args["id_abono"])
     AbonosController.eliminar(id_abono)
-    return "Abono eliminado exitosamente. <br /><a href='/'>Volver al inicio</a>"
+    return "Abono eliminado exitosamente. <br /><a href='/abonos'>Volver</a>"
 
 if __name__ == '__main__':
     blueprint.run(debug=True)
