@@ -1,7 +1,12 @@
-# Aplicación para gestionar planes de ahorro, usuarios y abonos, con interfaz gráfica en Kivy y aplicación web con Flask, conectada a una base de datos PostgreSQL en Render.
+## Aplicación para gestionar planes de ahorro, usuarios y abonos, con interfaz gráfica en Kivy y aplicación web con Flask, conectada a una base de datos PostgreSQL en Render.
 
 ---
-
+# Primera Opción
+puedes acceder directamente a la aplicación publicada en línea:
+```
+https://proyecto-ahorro-programado-web.onrender.com
+```
+# Segunda Opción
 ## 1. Requisitos previos
 
 Antes de comenzar, asegúrate de tener instalado lo siguiente:
