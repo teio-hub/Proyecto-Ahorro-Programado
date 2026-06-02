@@ -15,7 +15,18 @@
 - **Cargo:** Gerente de proyectos en una compañía financiera
 - **Experiencia relacionada:** Finanzas
 - **Fecha de la entrevista:** 08/02/2026
+  
+ --- 
+## 🌐 Aplicación Web
 
+Para ejecutar la aplicación web localmente, consulta las instrucciones detalladas en:
+
+ [INSTALACION_WEB.md](https://github.com/teio-hub/Proyecto-Ahorro-Programado/blob/main/INSTALACION_WEB.md)
+
+También puedes acceder directamente a la aplicación publicada en línea:
+```
+https://proyecto-ahorro-programado-web.onrender.com
+```
 ---
 
 ## 📖 Descripción del Proyecto
@@ -135,7 +146,7 @@ Si todo está bien, verá el menú del programa en el panel de terminal interno.
 
 Abra el archivo `test/test_ahorro.py` y ejecútelo de la misma forma que el paso anterior.
 
-> 💡 También puede ejecutar las pruebas desde la terminal integrada del entorno (`View > Terminal`) usando el mismo comando de la Opción 1.
+>  También puede ejecutar las pruebas desde la terminal integrada del entorno (`View > Terminal`) usando el mismo comando de la Opción 1.
 
 ---
 ## 📥 Entradas del Sistema
