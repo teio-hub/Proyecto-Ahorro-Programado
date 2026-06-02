@@ -29,9 +29,11 @@ class AbonosController:
     def insertar(abono: Abono):
         cursor = AbonosController.obtener_cursor()
         consulta = f"""insert into abonos (id_plan, mes_abono, valor_abono, nueva_cuota)
-                    values ({abono.id_plan}, {abono.mes_abono}, {abono.valor_abono}, {abono.nueva_cuota})"""
+                    values ({abono.id_plan}, {abono.mes_abono}, {abono.valor_abono}, {abono.nueva_cuota})
+                    returning id_abono"""
         cursor.execute(consulta)
         cursor.connection.commit()
+        return cursor.fetchone()[0]
 
     def buscar(id_abono):
         cursor = AbonosController.obtener_cursor()
