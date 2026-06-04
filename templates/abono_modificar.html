@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head></head>
-<body>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/litera/bootstrap.min.css">
+</head>
+<body class="container mt-4">
     <h2>Modificar Abono</h2>
     <form action="/actualizar_abono">
-        <table>
+        <table class="table table-bordered">
             <tr>
-                <td>ID Abono</td>
-                <td><input type="text" name="id_abono" value="{{ abono.id_abono }}" readonly /></td>
+                <th>ID Abono</th>
+                <td><input type="text" class="form-control" name="id_abono" value="{{ abono.id_abono }}" readonly /></td>
             </tr>
             <tr>
-                <td>ID Plan</td>
-                <td><input type="number" name="id_plan" value="{{ abono.id_plan }}" /></td>
+                <th>ID Plan</th>
+                <td><input type="number" class="form-control" name="id_plan" value="{{ abono.id_plan }}" /></td>
             </tr>
             <tr>
-                <td>Mes del abono</td>
-                <td><input type="number" name="mes_abono" value="{{ abono.mes_abono }}" /></td>
+                <th>Mes del abono</th>
+                <td><input type="number" class="form-control" name="mes_abono" value="{{ abono.mes_abono }}" /></td>
             </tr>
             <tr>
-                <td>Valor abono ($)</td>
-                <td><input type="text" name="valor_abono" value="{{ abono.valor_abono }}" /></td>
+                <th>Valor abono ($)</th>
+                <td><input type="text" class="form-control" name="valor_abono" value="{{ abono.valor_abono }}" /></td>
             </tr>
             <tr>
-                <td>Nueva cuota ($)</td>
-                <td><input type="text" name="nueva_cuota" value="{{ abono.nueva_cuota }}" /></td>
+                <th>Nueva cuota ($)</th>
+                <td><input type="text" class="form-control" name="nueva_cuota" value="{{ abono.nueva_cuota }}" /></td>
             </tr>
         </table>
-        <input type="submit" value="Guardar cambios" />
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
     </form>
 
     <br />
 
     <form action="/eliminar_abono">
         <input type="hidden" name="id_abono" value="{{ abono.id_abono }}" />
-        <input type="submit" value="Eliminar abono" />
+        <button type="submit" class="btn btn-danger">Eliminar abono</button>
     </form>
 
     <br />
 
-    <a href="/abonos">Volver</a>
+    <a href="/abonos" class="btn btn-secondary">Volver</a>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
