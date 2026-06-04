@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head></head>
-<body>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/litera/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+
     <h2>Usuario encontrado</h2>
-    <table>
+
+    <table class="table table-bordered w-50">
         <tr>
-            <td>Cédula</td>
+            <th>Cédula</th>
             <td>{{ usuario.cedula }}</td>
         </tr>
         <tr>
-            <td>Nombre</td>
+            <th>Nombre</th>
             <td>{{ usuario.nombre }}</td>
         </tr>
         <tr>
-            <td>Apellido</td>
+            <th>Apellido</th>
             <td>{{ usuario.apellido }}</td>
         </tr>
         <tr>
-            <td>Teléfono</td>
+            <th>Teléfono</th>
             <td>{{ usuario.telefono }}</td>
         </tr>
         <tr>
-            <td>Correo</td>
+            <th>Correo</th>
             <td>{{ usuario.correo }}</td>
         </tr>
         <tr>
-            <td>Dirección</td>
+            <th>Dirección</th>
             <td>{{ usuario.direccion }}</td>
         </tr>
     </table>
 
-    <a href="/usuarios">Volver</a>
+    <a href="/usuarios" class="btn btn-secondary">Volver</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
