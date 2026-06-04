@@ -33,7 +33,24 @@ git clone https://github.com/ilyyy-bit/Proyecto-Ahorro-Programado.git
 En GitHub, haz click en **Code** → **Download ZIP**, descomprime la carpeta y ábrela.
 
 ---
+## Crear tu propia base de datos en Render
 
+1. Ve a https://render.com y crea una cuenta o inicia sesión
+2. Haz click en **New** → **PostgreSQL**
+3. Dale un nombre a tu base de datos y haz click en **Create Database**
+4. Una vez creada, ve a tu base de datos → **Connect** → copia el **External Database URL**
+
+El formato es así:
+**postgresql: `//USUARIO:CONTRASEÑA@HOST/NOMBRE_BD`**
+
+De ahí sacas los datos para tu `secret_config.py`:
+
+- **PGUSER** → lo que está entre `postgresql://` y `:` 
+- **PGPASSWORD** → lo que está entre `:` y `@` → `EgNnz5f...`
+- **PGHOST** → lo que está entre `@` y `/` 
+- **PGDATABASE** → lo que está después del último `/` → `ahorroprogramado`
+- **PGPORT** → siempre es `5432`
+--- 
 ## 3. Configurar la conexión a la base de datos
 
 Necesitas crear un archivo llamado `secret_config.py` en la raíz del proyecto. Puedes guiarte del archivo `secret_config_sample.py` que ya está incluido — solo copia ese archivo, renómbralo a `secret_config.py` y rellena los datos:
