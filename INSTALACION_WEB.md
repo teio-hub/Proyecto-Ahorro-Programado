@@ -63,17 +63,12 @@ Puedes encontrar estos datos en Render → tu base de datos → **Connect** → 
 
 **Opción A:** Desde la aplicación web, haz click en el link **"crear las tablas en la base de datos"** que aparece en cada página.
 
-**Opción B:** Ejecuta los scripts SQL en este orden desde VS Code con la extensión PostgreSQL:
-```sql
--- 1. Crear usuarios
-\i sql/crear-usuarios.sql
+**Opción B:** Desde VS Code con la extensión PostgreSQL instalada, abre cada archivo `.sql` de la carpeta `sql/` y ejecútalo con el botón ▷ en este orden:
+1. `sql/crear-usuarios.sql`
+2. `sql/crear-planes.sql`
+3. `sql/crear-abonos.sql`
 
--- 2. Crear planes de ahorro
-\i sql/crear-planes.sql
-
--- 3. Crear abonos
-\i sql/crear-abonos.sql
-```
+⚠️ El comando `\i` es exclusivo de la consola de PostgreSQL (psql) y **no funciona en PowerShell ni CMD**.
 
 ---
 
